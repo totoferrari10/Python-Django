@@ -281,5 +281,7 @@ pyrightconfig.json
 # Ignorar todo el historial local de archivos
 .historia
 .ionuro
+#base de datos sqlite
+db.sqlite3
 
 # Fin de https://www.toptal.com/developers/gitignore/api/django,python,visualstudiocode
