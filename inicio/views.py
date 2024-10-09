@@ -38,4 +38,4 @@ def segundo_template(request):
             }
     
 #VERSION 3 y definitiva de COMO usar un TEMPLATE
-    return render(request, "segundo_template.html", datos)
+    return render(request, "inicio/segundo_template.html", datos)

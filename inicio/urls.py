@@ -7,6 +7,6 @@ urlpatterns = [
     path("mi-vista/", mi_vista),
     path('', inicio),  
     path("vista-datos1/", vistas_datos1),
-    path("segundo-template/", segundo_template), 
+    path("segundo-template/", segundo_template, name='segundo_template'), 
     path("primer-template/", primer_template)  
 ]
