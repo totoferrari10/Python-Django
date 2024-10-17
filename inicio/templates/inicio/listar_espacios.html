@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espacios de Coworking</title>
+</head>
+<body>
+    <h1>Espacios de Coworking Disponibles</h1>
+    <ul>
+        {% for espacio in espacios %}
+            <li>
+                <strong>{{ espacio.nombre }}</strong><br>
+                Capacidad: {{ espacio.capacidad }} personas<br>
+                Ubicación: {{ espacio.ubicacion }}<br>
+                Precio: ${{ espacio.precio_por_hora }} por hora<br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

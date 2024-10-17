@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>SEGUNDO TEMPLATEaa</h1>
-    <h2>{{fecha_actual}}</h2>
-    <p>Listado:</p>
-    <ul>
-        {%for num in numeros%}
-        <li>
-            {{num}}
-        </li>
-        {%endfor%}
-        
-    </ul>
-</body>
+{% extends "inicio/index.html" %}
+
+{% block header  %}{% endblock header  %} 
+
+{% block section_block %}
+{% endblock section_block %}
+
+{% block servicios %}
+{% endblock servicios %}
 
 
+{% block contacto %}
+{% endblock contacto %}
 
-buenas, estoy teniendo un problema en cuanto al código, cuando cree la carpeta nueva de plantillas y dentro de su archivo segundo_template.html por dentro de la carpeta inicio, me pasa que una vez que carga los datos en google no me mestra la segunda carpeta, mientras que todas las otras funcionan bien.
+
