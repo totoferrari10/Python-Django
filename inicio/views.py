@@ -34,6 +34,9 @@ def listar_espacios(request):
     espacios = Coworking.objects.all()  # Recupera todos los espacios
     return render(request, 'inicio/listar_espacios.html', {'espacios': espacios})
 
+def buscar_espacios(request):
+    espacios = Coworking.objects.all()  # Recupera todos los espacios
+    return render(request, 'inicio/buscar_espacios.html', {'espacios': espacios})
 
 
 
