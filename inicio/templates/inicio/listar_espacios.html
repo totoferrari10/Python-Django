@@ -1,11 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espacios de Coworking</title>
-</head>
-<body>
+{% extends "inicio/index.html" %}
+
+
+
+{% block section_block%}
+<form action="{% url 'inicio:listar_espacios' %}" method="POST">
+    {% csrf_token %}
+
+
+    <p>
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" >
+    </p>
+    <p> 
+        <label for="lista">Lista de espacios:</label>
+        <input type="text" name="Lista" id="lista"> 
+    </p>
+    <p> 
+        <label for="capacidad">Capacidad:</label>
+        <input type="number"  name="capacidad" >
+    </p>
+    <p> 
+        <label for="Mensaje">Mensaje:</label>
+        <input type="text"  name="mensaje" >
+    </p>
+
+    <input type="Submit" value="search">
+    <button>Enviar</button>
+
+</form>
+{% endblock%}
+
+{% block servicios %}
+{% endblock servicios %}
+
+
+{% block contacto %}
+{% endblock contacto %}
+
+{% block portfolio %}
+{% endblock portfolio %}
+
+{% block header_h1  %} Espacios de Coworking Disponibles {% endblock header_h1 %}
+
+
     <h1>Espacios de Coworking Disponibles</h1>
     <ul>
         {% for espacio in espacios %}
@@ -17,6 +54,5 @@
             </li>
         {% endfor %}
     </ul>
-    <form action={% url "inicio:listar_espacios"%}></form>
-</body>
-</html>
+
+

@@ -32,10 +32,15 @@ def segundo_template(request):
 #################################TEMPLATE 3
 def listar_espacios(request):
     espacios = Coworking.objects.all()  # Recupera todos los espacios
+        
+    print("Request", request)
+    print("GET", request.GET)
+    print("POST", request.POST)
     return render(request, 'inicio/listar_espacios.html', {'espacios': espacios})
 
 def buscar_espacios(request):
     espacios = Coworking.objects.all()  # Recupera todos los espacios
+    
     return render(request, 'inicio/buscar_espacios.html', {'espacios': espacios})
 
 
