@@ -6,26 +6,9 @@
 <form action="{% url 'inicio:listar_espacios' %}" method="POST">
     {% csrf_token %}
 
+    {{form}}
 
-    <p>
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" >
-    </p>
-    <p> 
-        <label for="lista">Lista de espacios:</label>
-        <input type="text" name="Lista" id="lista"> 
-    </p>
-    <p> 
-        <label for="capacidad">Capacidad:</label>
-        <input type="number"  name="capacidad" >
-    </p>
-    <p> 
-        <label for="Mensaje">Mensaje:</label>
-        <input type="text"  name="mensaje" >
-    </p>
-
-    <input type="Submit" value="search">
-    <button>Enviar</button>
+    <input type="Submit" value="Enviar">
 
 </form>
 {% endblock%}
@@ -42,17 +25,5 @@
 
 {% block header_h1  %} Espacios de Coworking Disponibles {% endblock header_h1 %}
 
-
-    <h1>Espacios de Coworking Disponibles</h1>
-    <ul>
-        {% for espacio in espacios %}
-            <li>
-                <strong>{{ espacio.nombre }}</strong><br>
-                Capacidad: {{ espacio.capacidad }} personas<br>
-                Ubicación: {{ espacio.ubicacion }}<br>
-                Precio: ${{ espacio.precio_por_hora }} por hora<br>
-            </li>
-        {% endfor %}
-    </ul>
 
 

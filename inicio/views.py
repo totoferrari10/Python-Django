@@ -1,11 +1,10 @@
 from django.http import HttpResponse
 from django.template import Template, Context, loader
-#RUTA DE FECHA Y HORA ACTUAL
-from datetime import datetime
 #RUTA PARA USAR UN TEMPLATE👇
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 #RUTA PARA USAR 
 from .models import Coworking
+from inicio.forms import listarEspaciosForms
 
 
 def inicio(request):
@@ -29,19 +28,72 @@ def segundo_template(request):
 
 
 
-#################################TEMPLATE 3
+################################# Vista del listado de espacios
+
+# def listar_espacios(request, nombre, ambientes, capacidad):
+    
+#     auto = Coworking(nombre=nombre, ambientes=ambientes, capacidad=capacidad)
+#     auto.save()
+#     return render(request, 'inicio/listar_espacios.html', {'coworking': Coworking})
+
+# def listar_espacios(request):
+#     coworking = Coworking.objects.all()  # Recupera todos los espacios
+        
+#     print("Request", request)
+#     print("GET", request.GET)
+#     print("POST", request.POST)
+    
+#     formulario=listarEspaciosForms()
+    
+    
+#     if request.method == "POST":
+#         formulario = listarEspaciosForms(request.POST)
+#         if formulario.is_valid():
+#             data = formulario.cleaned_data
+#             coworking= Coworking(nombre=data.get("nombre"), ambientes=data.get("ambientes"), capacidad=data.get("capacidad"), mensaje=data.get("mensaje"))
+#             coworking.save()
+#             return redirect("inicio:buscar_espacios")
+#     return render(request, 'inicio/listar_espacios.html', { 'form': formulario})
+
+
+
+# def buscar_espacios(request):
+#     espacios = Coworking.objects.all()
+    
+#     return render(request, 'inicio/buscar_espacios.html', {'espacios': espacios})
+
+from django.shortcuts import render, redirect
+from .models import Coworking
+from inicio.forms import listarEspaciosForms
+
 def listar_espacios(request):
-    espacios = Coworking.objects.all()  # Recupera todos los espacios
+    coworking = Coworking.objects.all()  # Recupera todos los espacios
         
     print("Request", request)
     print("GET", request.GET)
     print("POST", request.POST)
-    return render(request, 'inicio/listar_espacios.html', {'espacios': espacios})
+    
+    formulario = listarEspaciosForms()
+
+    if request.method == "POST":
+        formulario = listarEspaciosForms(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            coworking = Coworking(
+                nombre=data.get("nombre"),
+                ambientes=data.get("ambientes"),
+                capacidad=data.get("capacidad"),
+                mensaje=data.get("mensaje")
+            )
+            coworking.save()
+            return redirect("inicio:buscar_espacios")
+    
+    return render(request, 'inicio/listar_espacios.html', {'form': formulario, 'espacios': coworking})
 
 def buscar_espacios(request):
-    espacios = Coworking.objects.all()  # Recupera todos los espacios
-    
+    espacios = Coworking.objects.all()  # Recupera todos los espacios de la base de datos
     return render(request, 'inicio/buscar_espacios.html', {'espacios': espacios})
+
 
 
 
