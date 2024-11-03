@@ -1,7 +1,7 @@
 
 
 from django.urls import path
-from inicio.views import inicio, segundo_template, primer_template, listar_espacios, buscar_espacios
+from inicio.views import inicio, segundo_template, primer_template, listar_espacios, buscar_espacios, sobre_nosotros, contacto
 
 app_name = "inicio"
 
@@ -12,6 +12,8 @@ urlpatterns = [
     path("primer-template/", primer_template, name="primer_template"),
     path('espacios/', listar_espacios, name='listar_espacios'),
     path('buscar/', buscar_espacios, name='buscar_espacios'),
+    path('sobre-nosotros/', sobre_nosotros, name='sobre_nosotros'),
+    path('contacto/', contacto, name='contacto'),
 
 ]
 

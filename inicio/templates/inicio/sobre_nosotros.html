@@ -1,0 +1,32 @@
+{% extends "inicio/index.html" %}
+
+{% block header %}
+{% endblock header %}
+
+
+{% block section_block %}
+<section class="page-section bg-primary"  id="about"> 
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">Sobre Nosotros!</h2>
+                <hr class="divider divider-light" />
+                <p class="text-white-75 mb-4">Contamos con oficinas completamente equipada con acceso las 24 horas. Incluyendo internet de alta velocidad y áreas de descanso, ademas salas de reuniones y eventos para tus presentaciones y networking!</p>
+                <p class="text-white-75 mb-4">Ofrecemos servicios de café y snacks gratuitos para recargar energías. Apuntamos a una comunidad diversa de emprendedores, freelancers y startups. Nuestras tarifas son flexibles y sin compromiso a largo plazo.</p>
+                <p class="text-white-75 mb-4">Estamos ubicados en la Avenida Principal, Olmos 222, en el corazón de la ciudad. Nuestra ubicación céntrica nos permite ofrecer fácil acceso a todos nuestros visitantes, ya sea que vengan en coche, transporte público o a pie. ¡Esperamos darte la bienvenida pronto!"</p>
+                <a class="btn btn-light btn-xl" href= {% url "inicio:contacto"%}> Contactanos</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock section_block %}
+
+{% block servicios %}
+{% endblock servicios %}
+
+{% block contact_section %}
+{% endblock contact_section %}
+
+{% block portfolio %}
+{% endblock portfolio %}
+

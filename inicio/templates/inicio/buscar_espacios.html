@@ -1,11 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-vamooss
-</body>
-</html>
+{% extends "inicio/index.html" %}
+{% load static %}
+
+{% block header_h1 %}
+<h1 class="text-white">¡Espacios de Coworking disponibles!</h1>
+{% endblock header_h1 %}
+{% block header_p %}
+{% endblock header_p %}
+{% block button_header %}
+{% endblock button_header %}
+
+{% block section_block %}
+{% if messages %}
+    {% for message in messages %}
+        <h3 style="color: grey; font-weight: bold;">{{ message }}</h3>
+
+    {% endfor %}
+{% endif %}
+
+<form method="GET" action="{% url 'inicio:listar_espacios' %}">
+    {{ formulario.as_p }}
+    <a href="{% url 'inicio:listar_espacios' %}">
+    <button type="button">Volver</button>
+</a>
+</form>
+
+{% endblock %}
+
+
+
+
+{% block servicios %}
+{% endblock servicios %}
+
+
+{% block contact_section %}
+{% endblock contact_section %}
+
+{% block portfolio %}
+{% endblock portfolio %} 
+
+
+
+

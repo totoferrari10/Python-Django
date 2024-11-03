@@ -1,15 +1,83 @@
 {% extends "inicio/index.html" %}
 
+
+{% load static %} 
+
 {% block header  %}{% endblock header  %} 
 
 {% block section_block %}
 {% endblock section_block %}
 
 {% block servicios %}
-{% endblock servicios %}
+
+<div id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box"  title="Project Name">
+                    <img class="img-fluid" src= {% static "assets/img/portfolio/fullsize/stream5.jpg"%} alt="..."  />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Categoria</div>
+                        <div class="project-name"> Projecto Stream</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" title="Project Name">
+                    <img class="img-fluid"  src= {% static "assets/img/portfolio/fullsize/manicura2.jpg" %} alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Categoria</div>
+                        <div class="project-name">Servicio de manicura</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box"  title="Project Name">
+                    <img class="img-fluid"  src= {%static "assets/img/portfolio/fullsize/ingles4.jpg" %} alt="..." style=" height: 667px;" />
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">Categoria</div>
+                        <div class="project-name">English class</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box"  title="Project Name">
+                    <img class="img-fluid"  src= {%static "assets/img/portfolio/fullsize/ingles3.jpg" %} alt="..." style=" height: 667px;" />
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">Categoria</div>
+                        <div class="project-name">English class</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box"  title="Project Name">
+                    <img class="img-fluid"  src= {%static "assets/img/portfolio/fullsize/stream6.jpg" %} alt="..." />
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">Categoria</div>
+                        <div class="project-name">Projecto stream</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box"  title="Project Name">
+                    <img class="img-fluid"  src= {%static "assets/img/portfolio/fullsize/manicura3.jpg" %} alt="..." />
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">Category</div>
+                        <div class="project-name">Servicio de manicura</div>
+                    </div>
+                </a>
+            </div>
+            
+
+        </div>
+    </div>
+</div> 
+
+{% endblock %}
 
 
-{% block contacto %}
-{% endblock contacto %}
+
+{% block contact_section %}
+{% endblock contact_section %}
 
 

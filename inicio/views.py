@@ -1,10 +1,17 @@
 from django.http import HttpResponse
 from django.template import Template, Context, loader
+from django.urls import reverse
+from urllib.parse import urlencode
 #RUTA PARA USAR UN TEMPLATE👇
 from django.shortcuts import render, redirect
 #RUTA PARA USAR 
 from .models import Coworking
 from inicio.forms import listarEspaciosForms
+from inicio.forms import buscarEspaciosForms
+
+
+
+
 
 
 def inicio(request):
@@ -30,70 +37,65 @@ def segundo_template(request):
 
 ################################# Vista del listado de espacios
 
-# def listar_espacios(request, nombre, ambientes, capacidad):
-    
-#     auto = Coworking(nombre=nombre, ambientes=ambientes, capacidad=capacidad)
-#     auto.save()
-#     return render(request, 'inicio/listar_espacios.html', {'coworking': Coworking})
-
-# def listar_espacios(request):
-#     coworking = Coworking.objects.all()  # Recupera todos los espacios
-        
-#     print("Request", request)
-#     print("GET", request.GET)
-#     print("POST", request.POST)
-    
-#     formulario=listarEspaciosForms()
-    
-    
-#     if request.method == "POST":
-#         formulario = listarEspaciosForms(request.POST)
-#         if formulario.is_valid():
-#             data = formulario.cleaned_data
-#             coworking= Coworking(nombre=data.get("nombre"), ambientes=data.get("ambientes"), capacidad=data.get("capacidad"), mensaje=data.get("mensaje"))
-#             coworking.save()
-#             return redirect("inicio:buscar_espacios")
-#     return render(request, 'inicio/listar_espacios.html', { 'form': formulario})
-
-
-
-# def buscar_espacios(request):
-#     espacios = Coworking.objects.all()
-    
-#     return render(request, 'inicio/buscar_espacios.html', {'espacios': espacios})
-
-from django.shortcuts import render, redirect
-from .models import Coworking
-from inicio.forms import listarEspaciosForms
+from django.contrib import messages
 
 def listar_espacios(request):
-    coworking = Coworking.objects.all()  # Recupera todos los espacios
-        
-    print("Request", request)
-    print("GET", request.GET)
-    print("POST", request.POST)
-    
-    formulario = listarEspaciosForms()
+    formulario = listarEspaciosForms(request.GET or None)
 
-    if request.method == "POST":
-        formulario = listarEspaciosForms(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            coworking = Coworking(
-                nombre=data.get("nombre"),
-                ambientes=data.get("ambientes"),
-                capacidad=data.get("capacidad"),
-                mensaje=data.get("mensaje")
-            )
-            coworking.save()
-            return redirect("inicio:buscar_espacios")
     
-    return render(request, 'inicio/listar_espacios.html', {'form': formulario, 'espacios': coworking})
+    if formulario.is_valid():  # Si el formulario es válido
+        # Obtenemos los datos del formulario
+        nombre = formulario.cleaned_data.get("nombre")
+        capacidad = formulario.cleaned_data.get("capacidad")
+        
+        # Construimos la URL para `buscar_espacios` con los parámetros
+        query_params = f"?nombre={nombre}&capacidad={capacidad}"
+        buscar_espacios_url = reverse("inicio:buscar_espacios") + query_params
+        messages.success(request, f"Tu lugar fue guardado a nombre de {nombre} para una capacidad de {capacidad} personas.")
+        
+        return redirect(buscar_espacios_url)
+
+    return render(request, 'inicio/listar_espacios.html', {'form': formulario})
+
+
 
 def buscar_espacios(request):
-    espacios = Coworking.objects.all()  # Recupera todos los espacios de la base de datos
-    return render(request, 'inicio/buscar_espacios.html', {'espacios': espacios})
+    # Inicializamos el formulario con los datos GET para mostrar en la página
+    formulario = buscarEspaciosForms(request.GET or None)
+    espacios = Coworking.objects.all()
+    
+    # Comprobamos si tenemos parámetros de búsqueda
+    if formulario.is_valid():
+        nombre = formulario.cleaned_data.get("nombre")
+        capacidad = formulario.cleaned_data.get("capacidad")
+        
+        # Filtramos por nombre y capacidad si esos campos tienen valores
+        if nombre:
+            espacios = espacios.filter(nombre__icontains=nombre)
+        if capacidad:
+            espacios = espacios.filter(capacidad=capacidad)
+    return render(request, 'inicio/buscar_espacios.html', {'formulario': formulario, 'espacios': espacios})
 
+def sobre_nosotros(request):
+    return render(request, 'inicio/sobre_nosotros.html')
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ContactoForm
+
+def contacto(request):
+    if request.method == "POST":
+        nombre = request.POST.get("name")
+        email = request.POST.get("email")
+        telefono = request.POST.get("phone")
+        mensaje = request.POST.get("message")
+        
+        # Aquí puedes añadir código para enviar el mensaje por email, guardar en la base de datos, etc.
+
+        messages.success(request, "El formulario fue enviado con éxito!")
+        return redirect('inicio:contacto')  # Cambia este nombre de vista por la correcta
+
+    return render(request, "inicio/contacto.html")
 
 
 

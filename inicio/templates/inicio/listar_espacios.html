@@ -1,29 +1,38 @@
 {% extends "inicio/index.html" %}
 
 
+{% block section_block %}
 
-{% block section_block%}
-<form action="{% url 'inicio:listar_espacios' %}" method="POST">
-    {% csrf_token %}
-
-    {{form}}
-
-    <input type="Submit" value="Enviar">
-
+{% if mensaje_exito %}
+    <p style="color: green; font-weight: bold;">Tu lugar fue guardado</p>
+{% endif %}
+<form action="{% url 'inicio:listar_espacios' %}" method="GET">
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
 </form>
-{% endblock%}
+{% endblock %}
+
 
 {% block servicios %}
 {% endblock servicios %}
 
 
-{% block contacto %}
-{% endblock contacto %}
+{% block contact_section %}
+{% endblock contact_section %}
 
 {% block portfolio %}
 {% endblock portfolio %}
 
-{% block header_h1  %} Espacios de Coworking Disponibles {% endblock header_h1 %}
+
+
+{% block header_h1  %} <h1 class="text-white">¡Guarda tu lugar en Coworking Oliva!</h1>
+{% endblock header_h1 %}
+{% block header_p %}
+<p class="text-white-75 mb-5">Encuentra el lugar ideal para colaborar y hacer crecer tus ideas.</p>
+{% endblock header_p %}
+{% block button_header %}
+{% endblock button_header %}
+
 
 
 
