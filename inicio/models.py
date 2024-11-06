@@ -1,12 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
 
 class Coworking(models.Model):
-    nombre = models.CharField(max_length=100)  # Nombre del espacio
-    descripcion = models.TextField()  # Descripción del espacio
+    nombre = models.CharField(max_length=100)  
+    descripcion = models.TextField()  
     ambientes = models.IntegerField(default=0)
-    capacidad = models.IntegerField()  # Capacidad del espacio en número de personas
-    precio_por_hora = models.DecimalField(max_digits=6, decimal_places=2)  # Precio por hora
-    disponibilidad = models.BooleanField(default=True)  # Si está disponible o no
+    capacidad = models.IntegerField()  
+    precio_por_hora = models.DecimalField(max_digits=6, decimal_places=2)  
+    disponibilidad = models.BooleanField(default=True)  
     mensaje = models.TextField() 
     
     def __str__(self):
@@ -28,3 +31,4 @@ class Contacto(models.Model):
     
     def __str__(self):
         return self.nombre
+    
