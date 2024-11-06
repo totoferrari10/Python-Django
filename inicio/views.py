@@ -83,8 +83,7 @@ def contacto(request):
         
 
         messages.success(request, "El formulario fue enviado con éxito!")
-        return redirect('inicio:contacto')  # Cambia este nombre de vista por la correcta
-
+        return redirect('inicio:contacto')  
     return render(request, "inicio/contacto.html")
 
 @login_required
