@@ -1,19 +1,15 @@
 {% extends "inicio/index.html" %}
 
 {% block title_head %}
-Inicio de sesion
+Cerrar sesion
 {% endblock title_head %}
 
 {% block header_h1 %}
-<h1 class="text-white">Inicio de sesion</h1>
+    <h1 class="text-white">Cerraste sesion correctamente!</h1>
 {% endblock  %}
 
 {% block main %}
-<form action= {% url "usuarios:login" %} method="POST">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Iniciar sesion">
-</form>
+
 {% endblock main%}
 
 {% block servicios %}

@@ -17,3 +17,7 @@ def login(request):
             return redirect("inicio:inicio")
     
     return render(request, "usuarios/login.html", {"form": formulario})
+
+def register(request):
+    formulario = ""
+    return render(request,"",{"form": formulario})
